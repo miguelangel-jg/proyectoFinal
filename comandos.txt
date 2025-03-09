@@ -1,0 +1,22 @@
+1) Crear migraciones:
+php artisan make:migration create_equipos_table
+php artisan make:migration create_camisetas_table
+php artisan make:migration create_clientes_table
+php artisan make:migration create_ventas_table
+php artisan make:migration create_detalle_ventas_table
+
+Ejecutar migraciones: php artisan migrate
+
+2) Crear Seeder:
+php artisan make:seeder CamisetasSeeder
+
+php artisan make:seeder EquiposSeeder
+
+Poblar Base de datos: php artisan db:seed
+
+3)Crear controlador para pagina principal: php artisan make:controller HomeController
+
+4) Crear Modelo de Camisetas: php artisan make:model Camisetas
+
+5) Crear controllador de camisetas
+
