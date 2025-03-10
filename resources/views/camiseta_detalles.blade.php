@@ -3,7 +3,6 @@
 @section('title', 'Detalles de Camiseta: ' . $camiseta->nombre_equipo)
 
 @section('content')
-
     <!-- Botón para volver a la página principal -->
     <div class="mt-4">
         <a href="{{ route('home') }}" class="btn btn-outline-primary">Volver al Inicio</a>
@@ -19,10 +18,8 @@
         <div class="row">
             <!-- Imagen de la camiseta -->
             <div class="col-md-5 mb-4">
-                <img src="{{ asset('storage/images/' . $camiseta->imagen) }}" alt="Imagen Camiseta"
-                    class="img-fluid rounded shadow-lg w-100 h-auto">
+                <img src="{{ asset('storage/images/' . $camiseta->imagen) }}" alt="Imagen de la camiseta" class="img-fluid">
             </div>
-
 
             <!-- Detalles de la camiseta -->
             <div class="col-md-6 ms-5">
@@ -35,10 +32,6 @@
 
                 <!-- Formulario para actualizar el stock -->
                 <h4 class="mt-4">Actualizar Stock</h4>
-
-                <div>
-
-                </div>
                 <form action="{{ route('camisetas.actualizarStock', $camiseta->id) }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -52,29 +45,21 @@
                     <button type="submit" class="btn btn-success">Actualizar Stock</button>
                 </form>
 
-
                 <div class="mt-3">
-                    <h4>Mas opciones...</h4>
+                    <h4>Más opciones...</h4>
                     <div class="d-flex">
                         <!-- Botón para editar la camiseta -->
-                        <div class="">
-
-                        </div>
-
+                        <a href="{{ route('camisetas.edit', $camiseta->id) }}"
+                            class="btn btn-warning text-white me-2">Editar Camiseta</a>
 
                         <!-- Eliminar camiseta -->
-
                         <form action="{{ route('camisetas.destroy', $camiseta->id) }}" method="POST" class="mt-3">
                             @csrf
                             @method('DELETE')
-                            <a href="{{ route('camisetas.edit', $camiseta->id) }}" class="btn btn-warning text-white">Editar
-                                Camiseta</a>
-                            <button type="submit" class="btn btn-danger">Eliminar Camiseta</button>
+                            <button type="submit" class="btn btn-danger ">Eliminar Camiseta</button>
                         </form>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

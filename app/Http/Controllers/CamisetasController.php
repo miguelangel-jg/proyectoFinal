@@ -63,24 +63,16 @@ class CamisetasController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nombre_equipo' => 'required|string|max:255',
-            'temporada' => 'required|string|max:255',
-            'marca' => 'required|string|max:255',
-            'talla' => 'required|string|max:5',
-            'precio' => 'required|numeric',
-            'stock' => 'required|integer',
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
+        // Almacenamos la imagen en el directorio público
         if ($request->hasFile('imagen')) {
             $imagen = $request->file('imagen');
-            $nombreImagen = $imagen->hashName();
-            $imagen->storeAs('public/images', $nombreImagen);
+            $nombreImagen = $imagen->hashName(); // Nombre único para la imagen
+            $imagen->storeAs('public/images', $nombreImagen);  // Almacenamos la imagen en storage/app/public/images
         } else {
             $nombreImagen = null;
         }
 
+        // Guardamos la camiseta en la base de datos
         $camiseta = new Camisetas();
         $camiseta->nombre_equipo = $request->nombre_equipo;
         $camiseta->temporada = $request->temporada;
@@ -92,6 +84,8 @@ class CamisetasController extends Controller
 
         $camiseta->save();
 
-        return redirect()->route('camisetas.show', $camiseta);
+        // Redirigir con éxito
+        return redirect()->route('camisetas.show', $camiseta->id)
+            ->with('success', 'Camiseta agregada correctamente.');
     }
 }
