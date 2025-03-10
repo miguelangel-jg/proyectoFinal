@@ -6,12 +6,10 @@
     <div class="container">
         <h1 class="my-4 text-center">Gestión de Inventario de Camisetas</h1>
 
-        <!-- Mensajes de éxito -->
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <!-- Tabla de camisetas -->
         <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
@@ -29,7 +27,6 @@
                 @foreach ($camisetas as $camiseta)
                     <tr>
                         <td>
-                            <!-- Imagen más grande -->
                             <img src="{{ asset('storage/images/' . $camiseta->imagen) }}" alt="Imagen Camiseta"
                                 class="img-fluid" style="max-width: 100px;">
                         </td>

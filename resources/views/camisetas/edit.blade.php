@@ -7,7 +7,6 @@
     <div class="container mt-5">
         <h1 class="my-4 text-center">Editar Camiseta: {{ $camiseta->nombre_equipo }}</h1>
 
-        <!-- Mensajes de éxito -->
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
@@ -50,7 +49,6 @@
                     required>
             </div>
 
-            <!-- Mostrar la imagen actual sin posibilidad de modificarla -->
             <div class="mb-3">
                 <label for="imagen" class="form-label">Imagen Actual:</label>
                 <div>

@@ -7,21 +7,18 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    // Mostrar la lista de camisetas en la página principal
     public function index()
     {
         $camisetas = Camisetas::all();
         return view('index', compact('camisetas'));
     }
 
-    // Mostrar los detalles de una camiseta
     public function show($id)
     {
         $camiseta = Camisetas::findOrFail($id);
         return view('camiseta_detalles', compact('camiseta'));
     }
 
-    // Guardar una nueva camiseta
     public function store(Request $request)
     {
         $request->validate([
@@ -38,14 +35,12 @@ class HomeController extends Controller
         return redirect()->route('home')->with('success', 'Camiseta agregada con éxito.');
     }
 
-    // Editar una camiseta
     public function edit($id)
     {
         $camiseta = Camisetas::findOrFail($id);
         return view('edit', compact('camiseta'));
     }
 
-    // Actualizar una camiseta
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -63,7 +58,6 @@ class HomeController extends Controller
         return redirect()->route('camisetas.show', $id)->with('success', 'Camiseta actualizada con éxito.');
     }
 
-    // Eliminar una camiseta
     public function destroy($id)
     {
         $camiseta = Camisetas::findOrFail($id);
