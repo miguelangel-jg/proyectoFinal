@@ -3,25 +3,21 @@
 @section('title', 'Detalles de Camiseta: ' . $camiseta->nombre_equipo)
 
 @section('content')
-    <!-- Botón para volver a la página principal -->
     <div class="mt-4">
         <a href="{{ route('home') }}" class="btn btn-outline-primary">Volver al Inicio</a>
     </div>
     <div class="container mt-5">
         <h1 class="my-4 text-center"><u>Detalles de la Camiseta:</u> {{ $camiseta->nombre_equipo }}</h1>
 
-        <!-- Mensajes de éxito -->
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
         <div class="row">
-            <!-- Imagen de la camiseta -->
             <div class="col-md-5 mb-4">
                 <img src="{{ asset('storage/images/' . $camiseta->imagen) }}" alt="Imagen de la camiseta" class="img-fluid">
             </div>
 
-            <!-- Detalles de la camiseta -->
             <div class="col-md-6 ms-5">
                 <h3 class="mb-3">Información</h3>
                 <p><strong>Temporada:</strong> {{ $camiseta->temporada }}</p>
@@ -30,7 +26,6 @@
                 <p><strong>Precio:</strong> {{$camiseta->precio}}€</p>
                 <p><strong>Stock:</strong> {{ $camiseta->stock }}</p>
 
-                <!-- Formulario para actualizar el stock -->
                 <h4 class="mt-4">Actualizar Stock</h4>
                 <form action="{{ route('camisetas.actualizarStock', $camiseta->id) }}" method="POST">
                     @csrf
@@ -48,11 +43,9 @@
                 <div class="mt-3">
                     <h4>Más opciones...</h4>
                     <div class="d-flex">
-                        <!-- Botón para editar la camiseta -->
                         <a href="{{ route('camisetas.edit', $camiseta->id) }}"
-                            class="btn btn-warning text-white me-2">Editar Camiseta</a>
+                            class="btn btn-warning text-white me-2 mt-3">Editar Camiseta</a>
 
-                        <!-- Eliminar camiseta -->
                         <form action="{{ route('camisetas.destroy', $camiseta->id) }}" method="POST" class="mt-3">
                             @csrf
                             @method('DELETE')
